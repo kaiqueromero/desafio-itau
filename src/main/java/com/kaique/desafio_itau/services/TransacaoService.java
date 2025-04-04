@@ -20,6 +20,8 @@ public class TransacaoService {
 
         log.info("Iniciando o processo de gravar transações  " + transacaoRequestDto);
 
+        long inicio = System.currentTimeMillis();
+
         if (transacaoRequestDto.dataHora().isAfter(OffsetDateTime.now())) {
             log.error("Data e hora da transação maiores do que a data e hora atuais");
             throw new UnprocessableEntity("Data e hora da transação não podem ser futuras");
@@ -30,13 +32,18 @@ public class TransacaoService {
         }
 
         listaTransacoes.add(transacaoRequestDto);
-        log.info("Transação gravada com sucesso  " + transacaoRequestDto);
+        long fim = System.currentTimeMillis();
+        long tempo = fim - inicio;
+        log.info("Transação {} gravada com sucesso em um periodo de {} milisegundos " + transacaoRequestDto, tempo);
     }
 
     public void limparTransacoes() {
         log.info("Iniciando o processo de deletar transações  ");
+        long inicio = System.currentTimeMillis();
         listaTransacoes.clear();
-        log.info("Transações deletadas com sucesso  ");
+        long fim = System.currentTimeMillis();
+        long tempo = fim - inicio;
+        log.info("Transações deletadas com sucesso em um periodo de {} milisegundos ", tempo);
     }
 
     public List<TransacaoRequestDto> buscarTransacoes(Integer intervaloBusca) {

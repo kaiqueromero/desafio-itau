@@ -19,6 +19,8 @@ public class EstatisticaService {
 
         log.info("Iniciando o processo de calcular estatísticas pelo periodo de tempo de {} segundos", intervaloBusca);
 
+        long inicio = System.currentTimeMillis();
+
         List<TransacaoRequestDto>  transacoes = transacaoService.buscarTransacoes(intervaloBusca);
         DoubleSummaryStatistics estatisticas = transacoes.stream()
                 .mapToDouble(TransacaoRequestDto::valor)
@@ -28,7 +30,9 @@ public class EstatisticaService {
             return new EstatisticaResponseDto(0L, 0.0, 0.0, 0.0, 0.0);
         }
 
-        log.info("Estatísticas calculadas com sucesso");
+        long fim = System.currentTimeMillis();
+        long tempo = fim - inicio;
+        log.info("Estatísticas calculadas com sucesso em um periodo de {} milisegundos", tempo);
 
         return new EstatisticaResponseDto(
                 estatisticas.getCount(),

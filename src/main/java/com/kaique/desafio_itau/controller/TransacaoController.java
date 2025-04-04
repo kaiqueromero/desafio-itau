@@ -21,7 +21,7 @@ public class TransacaoController {
     @Operation(summary = "Endpoint responsável por adicionar uma transação")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Transação adicionada com sucesso"),
-            @ApiResponse(responseCode = "422", description = "Erro de validação, dados inválidos"),
+            @ApiResponse(responseCode = "422", description = "Erro de validação, dados não atendem os requisitos"),
             @ApiResponse(responseCode = "400", description = "Erro de requisição, dados inválidos"),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
