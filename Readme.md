@@ -55,4 +55,4 @@ mvn spring-boot:run
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `intervaloSegundos` | `integer` | **Não Obrigatório** O padrão default é 60s  |
+| `intervaloSegundos` | `integer` | **Não Obrigatório** - O padrão default é 60s  |
