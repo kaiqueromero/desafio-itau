@@ -24,6 +24,10 @@ public class EstatisticaService {
                 .mapToDouble(TransacaoRequestDto::valor)
                 .summaryStatistics();
 
+        if (transacoes.isEmpty()) {
+            return new EstatisticaResponseDto(0L, 0.0, 0.0, 0.0, 0.0);
+        }
+
         log.info("Estatísticas calculadas com sucesso");
 
         return new EstatisticaResponseDto(

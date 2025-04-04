@@ -18,7 +18,7 @@ public class TransacaoService {
 
     public void adicionarTransacao(TransacaoRequestDto transacaoRequestDto) {
 
-        log.info("Iniciando o processo de gravar transações" + transacaoRequestDto);
+        log.info("Iniciando o processo de gravar transações  " + transacaoRequestDto);
 
         if (transacaoRequestDto.dataHora().isAfter(OffsetDateTime.now())) {
             log.error("Data e hora da transação maiores do que a data e hora atuais");
@@ -30,21 +30,21 @@ public class TransacaoService {
         }
 
         listaTransacoes.add(transacaoRequestDto);
-        log.info("Transação gravada com sucesso" + transacaoRequestDto);
+        log.info("Transação gravada com sucesso  " + transacaoRequestDto);
     }
 
     public void limparTransacoes() {
-        log.info("Iniciando o processo de deletar transações");
+        log.info("Iniciando o processo de deletar transações  ");
         listaTransacoes.clear();
-        log.info("Transações deletadas com sucesso");
+        log.info("Transações deletadas com sucesso  ");
     }
 
     public List<TransacaoRequestDto> buscarTransacoes(Integer intervaloBusca) {
 
-        log.info("Iniciando o processo de buscar transações pelo periodo de tempo de {} segundos", intervaloBusca);
+        log.info("Iniciando o processo de buscar transações pelo periodo de tempo de {} segundos  ", intervaloBusca);
         OffsetDateTime dataHoraIntervalo = OffsetDateTime.now().minusSeconds(intervaloBusca);
 
-        log.info("transações retornadas com sucesso pelo periodo de tempo de {} segundos ", intervaloBusca);
+        log.info("transações retornadas com sucesso pelo periodo de tempo de {} segundos  ", intervaloBusca);
         return listaTransacoes.stream()
                 .filter(transacao -> transacao.dataHora().isAfter(dataHoraIntervalo))
                 .toList();
