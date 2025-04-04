@@ -17,7 +17,7 @@ public class EstatisticaService {
 
     public EstatisticaResponseDto calcularEstatistica(Integer intervaloBusca) {
 
-        log.info("Iniciando o processo de calcular estatísticas pelo periodo de tempo de {} segundos", intervaloBusca);
+        log.info("Iniciando o processo de calcular estatísticas em um periodo de tempo de {} segundos", intervaloBusca);
 
         long inicio = System.currentTimeMillis();
 

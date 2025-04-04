@@ -28,7 +28,7 @@ public class TransacaoService {
         }
         if (transacaoRequestDto.valor() < 0) {
             log.error("Valor da transação menor que zero");
-            throw new UnprocessableEntity(" O Valor da transação não pode ser menor que zero");
+            throw new UnprocessableEntity("O Valor da transação não pode ser menor que zero");
         }
 
         listaTransacoes.add(transacaoRequestDto);
